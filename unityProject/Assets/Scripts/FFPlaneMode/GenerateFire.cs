@@ -78,31 +78,20 @@ public class GenerateFire : MonoBehaviour
 
     }
 
-    public void FireUnspawn()
+  public float GetAltitude(Vector2 pos)
+  {
+    // Raycast test
+    RaycastHit hit;
+    if (Physics.Raycast(new Vector3(pos.x, 10000, pos.y), Vector3.down, out hit, 50000))
     {
-        foreach (GameObject fire in fireList)
-        {
-            Destroy(fire);
-        }
+      float raycastDistance = hit.distance;
+      raycastDistance = 10000 - raycastDistance;
+      // Debug raycast result and mathematical result
+      Debug.Log("Raycast hit at " + hit.point + " with height " + raycastDistance);
+      return raycastDistance;
     }
 
-    public float GetAltitude(Vector2 pos)
-    {
-        float res = 0.0f;
-        // Raycast test
-        RaycastHit hit;
-        if (Physics.Raycast(new Vector3(pos.x, 10000, pos.y), Vector3.down, out hit, 50000))
-        {
-            float raycastDistance = hit.distance;
-            raycastDistance = 10000 - raycastDistance;
-            // Debug raycast result and mathematical result
-            Debug.Log("Raycast hit at " + hit.point + " with height " + raycastDistance);
-        }
-        else
-        {
-            Debug.LogError("Raycast missed");
-        }
-
-        return res;
-    }
+    Debug.LogError("Raycast missed");
+    return 0.0f;
+  }
 }
