@@ -65,9 +65,20 @@ public class TerrainChunk : MonoBehaviour
         meshObject.transform.parent = parent;
         if (activateTree)
         {
+            float TreePosX, TreePosY, TreePosZ,signex,signey;
+            //  RaycastHit hit;
             //while raycast pas donne bonne hauteur changer random
-            float TreePosX = Random.Range(-bounds.size.x / 2, bounds.size.x / 2) + (bounds.size.x * (sampleCentre.x + 1) / Mathf.Abs(sampleCentre.x + 1));
-            float TreePosZ = Random.Range(-bounds.size.y / 2, bounds.size.y / 2) + (bounds.size.y * (sampleCentre.y + 1) / Mathf.Abs(sampleCentre.y + 1));
+            //do {
+            //if(sampleCentre.x == 0){signex = 0;}
+            //else { signex = sampleCentre.x / 128 ; }
+                TreePosX = Random.Range(-bounds.size.x / 2, bounds.size.x / 2) + (bounds.size.x * (sampleCentre.x ) / 128);
+                TreePosZ = Random.Range(-bounds.size.y / 2, bounds.size.y / 2) + (bounds.size.y * (sampleCentre.y ) / 128);
+                
+                Vector3 pos = new Vector3(TreePosX, 15000, TreePosZ);
+                Debug.Log(TreePosX);
+                Debug.Log(TreePosZ);
+            //} while (Physics.Raycast(position,transform.TransformDirection(Vector3.down),out hit,Mathf.Infinity));
+            
             //for nombre d'arbre raycast pour determiner posY
             GameObject tree = Instantiate(treeObject, meshObject.transform);
             tree.transform.localPosition = new Vector3(TreePosX, 0, TreePosZ);
