@@ -19,6 +19,8 @@ public class TerrainGenerator : MonoBehaviour
     public Transform viewer;
     public Material mapMaterial;
 
+    public bool activateTree;
+
     Vector2 viewerPosition;
     Vector2 viewerPositionOld;
 
