@@ -40,7 +40,7 @@ public class TerrainChunk : MonoBehaviour
     bool createSpawn;
 
 
-    public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material, bool CreateSpawn,bool activateTree,GameObject treeObject)
+    public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material, bool CreateSpawn, bool activateTree, GameObject treeObject)
     {
         this.coord = coord;
         this.detailLevels = detailLevels;
@@ -70,7 +70,7 @@ public class TerrainChunk : MonoBehaviour
             float TreePosZ = Random.Range(-bounds.size.y / 2, bounds.size.y / 2) + (bounds.size.y * (sampleCentre.y + 1) / Mathf.Abs(sampleCentre.y + 1));
             //for nombre d'arbre raycast pour determiner posY
             GameObject tree = Instantiate(treeObject, meshObject.transform);
-            tree.transform.localPosition = new Vector3(TreePosX,0,TreePosZ);
+            tree.transform.localPosition = new Vector3(TreePosX, 0, TreePosZ);
         }
         SetVisible(false);
 
